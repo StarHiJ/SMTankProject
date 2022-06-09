@@ -43,7 +43,7 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
-    <PlatformToolset>v142</PlatformToolset>
+    <PlatformToolset>v143</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
@@ -79,8 +79,8 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
-    <IncludePath>C:\Users\안성진\OneDrive\바탕 화면\잡것\공부\3학년 1학기\컴퓨터 그래픽스\8조%28안성진_조별희_윤승식%29\%281~2%29.코드&amp;&amp;결과물\OpenGLProject-main\include;$(IncludePath)</IncludePath>
-    <LibraryPath>C:\Users\안성진\OneDrive\바탕 화면\잡것\공부\3학년 1학기\컴퓨터 그래픽스\8조%28안성진_조별희_윤승식%29\%281~2%29.코드&amp;&amp;결과물\OpenGLProject-main\lib;$(LibraryPath)</LibraryPath>
+    <IncludePath>$(SolutionDir)\include;$(IncludePath)</IncludePath>
+    <LibraryPath>$(SolutionDir)\lib;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <LinkIncremental>false</LinkIncremental>
