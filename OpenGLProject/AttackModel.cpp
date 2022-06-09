@@ -3,7 +3,6 @@
 AttackModel::AttackModel(std::string const& path, bool gamma, Transform* parent)
 	: Model(path, gamma , parent)
 {
-
 }
 
 void AttackModel::Draw(class Shader& shader)
@@ -25,36 +24,37 @@ void AttackModel::Draw(class Shader& shader)
 		AddPosition(glm::vec3(0.0f, -m_gravityVelocity, 0.0f));
 	}
 
-	glm::vec3 velocity = m_parentFront * m_velocity * m_deltaTime;
+	glm::vec3 velocity = GetFront() * m_velocity * m_deltaTime;
 	AddPosition(velocity);
 	m_range += m_velocity * m_deltaTime;
-	std::cout << m_range << std::endl;
 	Model::Draw(shader);
 }
 
 void AttackModel::TankAttack()
 {
 	m_bSiege = false;
-	m_velocity = 20.0f;
-	m_maxRange = 20.0f;
+	m_velocity = 40.0f;
+	m_maxRange = 40.0f;
 	Run();
-	SetScale(glm::vec3(1.0f, 1.0f, 1.0f));
+	SetScale(glm::vec3(0.1f, 0.1f, 0.1f));
+	AddPosition(glm::vec3(0.0f, 0.17f, 0.0f));
 }
 
 void AttackModel::SiegeTankAttack()
 {
 	m_bSiege = true;
-	m_gravityVelocity = -10.0f * m_deltaTime;
+	m_gravityVelocity = -5.0f * m_deltaTime;
 	m_velocity = 40.0f;
 	m_maxRange = 80.0f;
 	Run();
-	SetScale(glm::vec3(3.0f, 3.0f, 3.0f));
+	SetScale(glm::vec3(0.25f, 0.25f, 0.25f));
+	AddPosition(glm::vec3(0.0f, 0.2f, 0.0f));
 }
 
 void AttackModel::Run()
 {
 	m_visible = true;
 	m_range = 0.0f;
-	m_parentFront = m_parent->GetFront();
-	SetPosition(glm::vec3(0.0f, 0.2f, 0.0f));
+	glm::vec3 velocity = GetFront() * m_deltaTime * 20.0f;
+	AddPosition(velocity);
 }

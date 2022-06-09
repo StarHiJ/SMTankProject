@@ -105,7 +105,7 @@ int main()
     SiegeTank tank;
     player = &tank;
     player->SetRotation(glm::vec3(0.0f, 180.0f, 0.0f));
-    AttackModel attack("resources/attack.obj", 0, tank.GetTurretMesh());
+    AttackModel attack("resources/bullet.obj");
     attack.m_visible = false;
     tank.SetAttackModel(&attack);
 
@@ -197,7 +197,7 @@ int main()
         updateFrame += deltaTime;
         if (updateFrame >= maxUpdateFrame)
         {
-            updateFrame -= maxUpdateFrame;
+            updateFrame = 0.0f;
             Update();
         }
 
@@ -205,7 +205,7 @@ int main()
         processInput(window);
 
         // 초기 렌더링
-        glClearColor((102.0f /255.0f), 1.0f, 1.0f, 1.0f);
+        glClearColor((106.0f / 255.0f), (191.0f / 255.0f), (222.0f / 255.0f), 1.0f);
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
         // Camera Position 조정
@@ -351,7 +351,6 @@ void mouse_button_callback(GLFWwindow* window, int button, int action, int mods)
 }
 void scroll_callback(GLFWwindow* window, double xoffset, double yoffset)
 {
-    //player->RotateTurretHeight(static_cast<float>(yoffset), deltaTime);
     camera.ProcessMouseScroll(static_cast<float>(yoffset));
 }
 

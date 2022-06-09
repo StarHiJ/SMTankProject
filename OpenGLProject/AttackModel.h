@@ -9,9 +9,8 @@ private:
 	float m_velocity = 20.0f;
 	float m_maxRange = 20.0f;
 	float m_range = 0.0f;
-	float m_gravity = 0.008f;
+	float m_gravity = 0.02f;
 	float m_gravityVelocity = 0.0f;
-	glm::vec3 m_parentFront{};
 public:
 	inline void SetDeltaTime(float deltaTime) { m_deltaTime = deltaTime; }
 public:

@@ -41,14 +41,14 @@ void Camera::ProcessMouseMovement(float xoffset, float yoffset, GLboolean constr
     xoffset *= m_mouseSensitivity;
     yoffset *= m_mouseSensitivity;
 
-    m_yaw += xoffset;
-    m_pitch += yoffset;
+    m_yaw += xoffset;//x
+    m_pitch += yoffset;//y
 
     // pitch가 범위를 벗어났을 때 화면이 뒤집히는 것을 방지
     if (constrainPitch)
     {
-        if (m_pitch > 89.0f)
-            m_pitch = 89.0f;
+        if (m_pitch > 0.0f)
+            m_pitch = 0.0f;
         if (m_pitch < -89.0f)
             m_pitch = -89.0f;
     }

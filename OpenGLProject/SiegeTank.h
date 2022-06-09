@@ -46,7 +46,6 @@ public:
 	void RotateLeft();
 	void RotateRight();
 	void RotateWorldTurret(float pitch, float yaw);
-	void RotateTurretHeight(float yoffset, float deltaTime);
 	void Attack();
 	void Morph();
 	void Stand();

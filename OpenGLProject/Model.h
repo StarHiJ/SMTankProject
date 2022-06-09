@@ -44,5 +44,3 @@ private:
     // 필요한 정보는 텍스처 구조체로 반환
     std::vector<struct Texture> loadMaterialTextures(aiMaterial* mat, aiTextureType type, std::string typeName);
 };
-
-unsigned int TextureFromFile(const char* path, const std::string& directory, bool gamma);

@@ -11,7 +11,6 @@ public:
 	inline int GetAnimationType() { return m_animationType; };
 	inline class Animation* GetAnimation() { return m_animations[m_animationType]; }
 
-
 public:
 	Animator();
 	virtual ~Animator();

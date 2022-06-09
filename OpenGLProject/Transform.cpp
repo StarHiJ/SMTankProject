@@ -25,7 +25,7 @@ glm::mat4 Transform::GetModelMatrix()
     // scene 에서의 위치 변환
     model = glm::translate(model, worldPosition);
 
-    // rotation 변환
+    // rotation 변환 오일러 각도로 표현
     model = glm::rotate(model, glm::radians(worldRotation).z, glm::vec3(0.0f, 0.0f, 1.0f));
     model = glm::rotate(model, glm::radians(worldRotation).y, glm::vec3(0.0f, 1.0f, 0.0f));
     model = glm::rotate(model, glm::radians(worldRotation).x, glm::vec3(1.0f, 0.0f, 0.0f));

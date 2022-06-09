@@ -50,7 +50,7 @@ SiegeTank::SiegeTank()
 
     targetAnimnation = m_animations[(int)EState::SIEGETANK_ATTACK];
     targetAnimnation->LoadModel("resources/SiegeTank/SiegeTank_Attack_", 30, this);
-    targetAnimnation->SetDelay(120);
+    targetAnimnation->SetDelay(90);
     /*
     Animation* targetAnimnation = m_animations[(int)EState::TANK_STAND];
     targetAnimnation->LoadModel("resources/SiegeTank/Tank_Stand_", 1, this);
@@ -223,28 +223,6 @@ void SiegeTank::RotateWorldTurret(float pitch, float yaw)
     m_worldTurretRotate += (m_finalWorldTurretRotate - m_worldTurretRotate) * m_deltaTime;
 }
 
-void SiegeTank::RotateTurretHeight(float yoffset, float deltaTime)
-{
-    //std::cout << "turretVec : " << m_turretRotate.x << ", " << m_turretRotate.z << ", ";
-    //std::cout << GetTurretMesh()->GetPosition().x << ", " << GetTurretMesh()->GetPosition().y << ", " << GetTurretMesh()->GetPosition().z << std::endl;
-    //GetTurretMesh()->SetRotation(glm::vec3{ 0.0f ,0.0f,0.0f });
-    //GetTurretMesh()->AddRotation(glm::vec3{ 0.0f ,0.0f,-45.0f });
-    //GetTurretMesh()->AddRotation(glm::vec3{ 0.0f ,-45.0f,0.0f });
-    float rotateSpeed = 20.0f  * yoffset;
-
-    glm::vec3 rightVec = { 0.05f,-0.03f,-0.04f };
-    glm::normalize(rightVec);
-    GetTurretMesh()->AddRotation(glm::vec3{ rightVec * rotateSpeed });
-
-    
-    //GetTurretMesh()->AddRotation(glm::vec3{ 30.0f * yoffset,0.0f,0.0f });
-    //glm::normalize(glm::cross(GetFront(), GetUp()));
-    //GetTurretMesh()->SetPosition(glm::vec3{ 0.0f,-0.1f,0.0f });
-    //AddRotation(rightVec* rotateSpeed);
-    //GetTurretMesh()->AddRotation(m_turretRotate * rotateSpeed);
-
-}
-
 void SiegeTank::Attack()
 {
     if (!m_bCanAttack)
@@ -263,8 +241,14 @@ void SiegeTank::Attack()
         }
         SetAnimationType((int)SiegeTank::EState::TANK_ATTACK);
         GetAnimation()->Play();
-        GetAttackModel()->SetParent(GetTurretMesh());
         SetTurretRotation(m_worldTurretRotate - GetRotation());
+
+        glm::vec3 pos{};
+        glm::vec3 rot{};
+        GetTurretMesh()->GetWorldPosition(pos);
+        GetTurretMesh()->GetWorldRotation(rot);
+        GetAttackModel()->SetPosition(pos);
+        GetAttackModel()->SetRotation(rot);
         GetAttackModel()->TankAttack();
     }
     else if(GetAnimationType() == (int)SiegeTank::EState::SIEGETANK_STAND)
@@ -275,8 +259,14 @@ void SiegeTank::Attack()
         }
         SetAnimationType((int)SiegeTank::EState::SIEGETANK_ATTACK);
         GetAnimation()->Play();
-        GetAttackModel()->SetParent(GetTurretMesh());
         SetTurretRotation(m_worldTurretRotate - GetRotation());
+
+        glm::vec3 pos{};
+        glm::vec3 rot{};
+        GetTurretMesh()->GetWorldPosition(pos);
+        GetTurretMesh()->GetWorldRotation(rot);
+        GetAttackModel()->SetPosition(pos);
+        GetAttackModel()->SetRotation(rot);
         GetAttackModel()->SiegeTankAttack();
     }
 }

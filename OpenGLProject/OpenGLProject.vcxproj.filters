@@ -88,11 +88,5 @@
     <None Include="model_loading.fs">
       <Filter>리소스 파일</Filter>
     </None>
-    <None Include="particle.vs">
-      <Filter>리소스 파일</Filter>
-    </None>
-    <None Include="particle.fs">
-      <Filter>리소스 파일</Filter>
-    </None>
   </ItemGroup>
 </Project>
